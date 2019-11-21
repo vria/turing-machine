@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Console application to launch Turing machines.
+ *
+ * @author Vlad Riabchenko <contact@vria.eu>
+ */
+
+use Symfony\Component\Console\Application;
+use Vria\TuringMachine\Command\BracketsCommand;
+use Vria\TuringMachine\Command\IncrementBinaryCommand;
+
+require __DIR__.'/../vendor/autoload.php';
+
+const TURING_MACHINE_CLASS = \Vria\TuringMachine\TuringMachine::class;
+
+$application = new Application();
+
+$application->add(new BracketsCommand(TURING_MACHINE_CLASS));
+$application->add(new IncrementBinaryCommand(TURING_MACHINE_CLASS));
+$application->run();
